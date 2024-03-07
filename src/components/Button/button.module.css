@@ -1,0 +1,39 @@
+.outlinebtn {
+    height: 40px;
+    border: 1px solid #fff;
+    border-radius: 8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.containedbtn {
+    height: 40px;
+    background-color: #fff;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.containedbtn:hover, .outlinebtn:hover {
+    border: 1px solid #000;
+}
+
+.outlineText {
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px 20px;
+}
+
+.containedText {
+    color: #ed5353;
+    font-size: 1rem;
+    font-weight: bold;
+    margin: 10px 20px;
+}

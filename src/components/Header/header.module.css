@@ -1,0 +1,55 @@
+header {
+  height: 15vh;
+  background-color: #ed5353;
+  border-bottom-left-radius: 40px;
+  border-bottom-right-radius: 40px;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 50px;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+}
+
+h2 {
+  margin: 0;
+  color: #fff;
+}
+
+.btns {
+  display: flex;
+  gap: 10px;
+}
+
+.shape1 {
+    position: absolute;
+    object-fit: contain;
+    right: 10%;
+    z-index: 0;
+    top: 0;    
+    height: 95%
+}
+
+.shape2 {
+  position: absolute;
+  object-fit: contain;
+  right: 50%;
+  z-index: 0;
+  top: 0;    
+  height: 95%
+}
+
+.loggedDiv {
+  display: flex;
+  gap: 1rem;
+  z-index: 1;
+  align-items: center;
+}
+
+.ctrlBtn {
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  cursor: pointer;
+}

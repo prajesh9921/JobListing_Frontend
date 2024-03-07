@@ -1,0 +1,60 @@
+p {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    margin: 0;
+}
+
+.parent {
+    display: flex;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+.leftPart {
+    width: 60%;
+    box-sizing: border-box;
+    padding: 0 5rem 0 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.rightPart {
+    width: 40%;
+}
+
+.rightPart > p {
+    margin: 20px 0 0 0;
+    padding: 0;
+    color: #fff;
+    font-size: 1.5rem;
+    text-align: center;
+    letter-spacing: 2px;
+}
+
+.subText {
+    color: #525252;
+    font-size: 0.9rem;
+    font-weight: bold;
+    margin: 0.5rem 0 2rem 0;
+}
+
+.btn {
+    margin: 1rem 0;
+}
+
+.promt {
+    font-size: 0.8rem;
+    color: #525252; 
+}
+
+.promt span {
+    font-size: 0.9rem;
+    color: #000;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
