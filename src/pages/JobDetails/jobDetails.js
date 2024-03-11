@@ -9,8 +9,10 @@ import { useParams } from "react-router-dom";
 import { toGetJobDetails } from "../../apis/jobs";
 import { toast } from "react-toastify";
 import { toGetTimeAgo } from "../../components/DateFormatter/dateFormatter";
+import { useNavigate } from "react-router-dom";
 
 const JobDetails = () => {
+  const navigate = useNavigate();
   const { jobid } = useParams();
   const [jobDetails, setJobDetails] = useState();
 
@@ -53,7 +55,7 @@ const JobDetails = () => {
             <p>{jobDetails?.location}</p>
           </div>
 
-          <button className={styles.editBtn}>Edit Job</button>
+          <button onClick={() => navigate('/job-add-page')} className={styles.editBtn}>Edit Job</button>
         </div>
 
         <div className={styles.jobInfo}>

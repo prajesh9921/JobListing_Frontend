@@ -1,0 +1,23 @@
+p {
+  font-size: 0.7rem;
+}
+
+.main {
+  display: inline-flex;
+  background-color: #ffeeee;
+  align-items: center;
+  margin: 5px 0;
+  margin-right: 5px;
+}
+
+.label {
+  margin: 0 10px;
+}
+
+.cross {
+  background-color: #ff6b6b;
+  color: #fff;
+  padding: 8px;
+  cursor: pointer;
+}
+

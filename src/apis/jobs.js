@@ -12,4 +12,17 @@ const toGetJobDetails = async (jobid) => {
     }
 }
 
-export {toGetJobDetails}
+const toCreateJob = async (data, setLoading) => {
+    try {
+        setLoading(true);
+        const url = `${baseurl}/job/create`;
+        const response = await axios.post(url, data)
+        setLoading(false);
+        return response.data;
+    } catch (error) {
+        setLoading(false);
+        console.log("Error creating job", error);
+    }
+}
+
+export {toGetJobDetails , toCreateJob}
