@@ -1,0 +1,113 @@
+.container {
+    margin: 0 auto 1rem auto;
+    width: 61%;
+    display: flex;
+    align-items: flex-start;
+    height: 120px;
+}
+
+h3 {
+    margin: 0;
+}
+
+.spacer {
+    display: flex;
+    flex: 1;
+}
+
+.details {
+    display: flex;
+    gap: 1rem;
+    height: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+}
+
+.detailsDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.selected {
+    background-color: #FF0000;
+    width: 5px;
+    height: 100%;
+}
+
+.companyLogo {
+    background-color: grey;
+    height: 50px;
+    width: 50px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.companyLogo img {
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+.sizeMoneyLocDiv {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.smldIcon {
+    height: 20px;
+    width: 20px;
+    color: grey;
+}
+
+.sizeMoneyLocDiv p {
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.typeroleDiv {
+    display: flex;
+    gap: 2rem;
+}
+
+.typeroleDiv p {
+    font-size: 0.8rem;
+    color: #ED5353;
+    font-weight: bold;
+}
+
+.skillsCard {
+    background-color: #FFEEEE;
+    padding: 5px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.skillsDiv {
+    display: flex;
+    gap: 1rem;
+}
+
+.skillsAndViewDetails {
+    box-sizing: border-box;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-end;
+    height: 100%;
+}
+
+.viewDetailsbtn {
+    background-color: #ED5353 !important;
+}
+
+.viewDetailsbtn:hover {
+    background-color: #ED5353 !important;
+}

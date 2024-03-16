@@ -4,7 +4,6 @@
 }
 
 h2 {
-  color: #000;
   margin: 20px 0;
 }
 
@@ -14,6 +13,10 @@ h2 {
   overflow-y: auto;
   box-sizing: border-box;
   padding: 10px 50px;
+}
+
+.leftPartTitle {
+  color: #000 !important;
 }
 
 .rightPart {
@@ -26,8 +29,7 @@ h2 {
   background-color: #000;
 }
 
-.rightPart h2 {
-  color: #fff;
+.rightPartTitle {
   text-align: center;
   margin-top: 10px;
 }

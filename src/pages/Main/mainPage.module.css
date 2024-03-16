@@ -1,0 +1,57 @@
+
+.dashboard {
+    width: 60%;
+    margin: 1rem auto;
+    padding: 10px;
+}
+
+.search {
+    display: flex;
+    flex: 1;
+    border: 1px solid #E3E3E3;
+    padding: 10px;
+    border-radius: 10px;
+    gap: 5px;
+}
+
+.search input {
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 1rem;
+}
+
+.filter {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+    justify-content: space-between;
+}
+
+.dropdown {
+    border-radius: 8px;
+    border: 1px solid #E3E3E3;
+}
+
+.dropdownDefault {
+    color: #adadad;
+  }
+
+.chipsDiv {
+    width: 60%;
+    flex-wrap: wrap;  
+}
+
+.filterbtn:hover {
+    background-color: #ED5353 !important;
+}
+
+.addJobbtn {
+    background-color: #ED5353 !important;
+    flex: 1 !important;
+    margin-top: 10px !important;
+}
+
+.jobList {
+    margin-top: 2rem;
+}

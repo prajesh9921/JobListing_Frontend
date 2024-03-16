@@ -1,4 +1,4 @@
-export const Jobtype = ["In Office", "Remote"];
+export const Jobtype = ["In Office", "Remote", "Hybrid"];
 
 export const Skills = [
   "Java",

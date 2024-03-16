@@ -7,35 +7,38 @@ import {
 import { Jobtype, Skills } from "../../utils/constants";
 import Button from "@mui/material/Button";
 import Chip from "../../components/Chip/chip";
-import { toCreateJob } from "../../apis/jobs";
+import { toCreateJob, toEditJob } from "../../apis/jobs";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { TailSpin } from 'react-loader-spinner'
+import { useLocation } from "react-router-dom";
 
 const JobDefinePage = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
+  const { data, edit } = state;
   const [loading, setLoading] = useState(false);
+  const userID = localStorage.getItem('userId');
 
   const [formData, setFormData] = useState({
-    companyName: "",
-    title: "",
-    jobDescription: "",
-    logoUrl: "",
-    salary: "",
-    jobType: "",
-    location: "",
-    aboutCompnay: "",
-    additionalInformation: "",
-    duration: "",
-    skills: [],
+    createdBy: userID,
+    companyName: data?.companyName || "",
+    title: data?.title || "",
+    jobDescription: data?.jobDescription || "",
+    logoUrl: data?.logoUrl || "",
+    salary: data?.salary || "",
+    jobType: data?.jobType || "",
+    location: data?.location || "",
+    aboutCompnay: data?.aboutCompnay || "",
+    additionalInformation: data?.additionalInformation || "",
+    duration: data?.duration || "",
+    skills: data?.skills || [],
   });
 
   const handleChange = (e) => {
-    console.log(e.target.name);
     if (e.target.name === "skills") {
       if (!formData.skills.includes(e.target.value)) {
         const temp = formData.skills;
-        console.log(temp);
         temp.push(e.target.value);
         setFormData({ ...formData, skills: temp });
       }
@@ -66,7 +69,13 @@ const JobDefinePage = () => {
       return toast.error("Required all fields except logo URL");
     }
 
-    const response = await toCreateJob(formData, setLoading);
+    let response;
+
+    if (edit) {
+      response = await toEditJob(formData, setLoading, data?._id)
+    } else {
+      response = await toCreateJob(formData, setLoading);
+    }
 
     if (response) {
       setTimeout(( ) => {
@@ -74,7 +83,7 @@ const JobDefinePage = () => {
       },3000)
       return toast.success(response.message);
     }
-    return toast.error("Error creating job please try again after some time");
+    return edit ? toast.error("Error editing job please try again after some time") : toast.error("Error creating job please try again after some time");
   };
 
   const handleCancel = () => {
@@ -85,10 +94,11 @@ const JobDefinePage = () => {
     <div className={styles.container}>
       {/* left part */}
       <div className={styles.leftPart}>
-        <h2>Add job description</h2>
+        <h2 className={styles.leftPartTitle}>Add job description</h2>
         <CustomInputBox
           label="Company Name"
           name="companyName"
+          value={formData?.companyName}
           placeholder="Enter your company name here"
           onChange={handleChange}
         />
@@ -97,30 +107,35 @@ const JobDefinePage = () => {
           name="logoUrl"
           placeholder="Enter the link"
           onChange={handleChange}
+          value={formData?.logoUrl}
         />
         <CustomInputBox
           label="Job position"
           placeholder="Enter job position"
           onChange={handleChange}
           name="title"
+          value={formData?.title}
         />
         <CustomInputBox
           label="Monthly salary"
           placeholder="Enter Amount in rupees"
           onChange={handleChange}
           name="salary"
+          value={formData?.salary}
         />
         <CustomInputBox
           label="Location"
           placeholder="Enter Location"
           onChange={handleChange}
           name="location"
+          value={formData?.location}
         />
         <CustomInputBox
           label="Duration"
           placeholder="Job duration ex: (2 years)"
           onChange={handleChange}
           name="duration"
+          value={formData?.duration}
         />
         <CustomDropdownMenu
           onChange={handleChange}
@@ -128,6 +143,7 @@ const JobDefinePage = () => {
           label="Job Type"
           data={Jobtype}
           name="jobType"
+          value={formData?.jobType}
         />
         <CustomInputBox
           style={styles.texareaLabel}
@@ -136,6 +152,7 @@ const JobDefinePage = () => {
           placeholder="Type the job description"
           onChange={handleChange}
           name="jobDescription"
+          value={formData?.jobDescription}
         />
         <CustomInputBox
           style={styles.texareaLabel}
@@ -144,12 +161,15 @@ const JobDefinePage = () => {
           placeholder="Type about your company"
           onChange={handleChange}
           name="aboutCompnay"
+          value={formData?.aboutCompnay}
         />
         <CustomInputBox
+          type="textarea"
           label="Information"
           placeholder="Enter the additional information"
           onChange={handleChange}
           name="additionalInformation"
+          value={formData?.additionalInformation}
         />
         <CustomDropdownMenu
           onChange={handleChange}
@@ -185,7 +205,7 @@ const JobDefinePage = () => {
 
       {/* right part */}
       <div className={styles.rightPart}>
-        <h2>Recruiter add job details here</h2>
+        <h2 className={styles.rightPartTitle}>Recruiter add job details here</h2>
       </div>
     </div>
   );

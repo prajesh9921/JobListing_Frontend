@@ -3,12 +3,12 @@ import Chip from "@mui/material/Chip";
 
 const Card = ({ data = "", type = "text", title }) => {
   return (
-    <div>
+    <div style={{marginBottom: 30}}>
       <h3>{title}</h3>
       {type === "text" ? (
-        <p>{data}</p>
+        <p style={{fontSize: 12, marginTop: 10}}>{data}</p>
       ) : (
-        <div>
+        <div style={{marginTop: 10}}>
           {data
             ? data?.map((item) => (
                 <Chip

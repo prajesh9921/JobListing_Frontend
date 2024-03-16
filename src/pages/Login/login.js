@@ -42,6 +42,9 @@ const LoginPage = () => {
 
     if (response) {
       if (response?.message === "user login successfull") {
+        localStorage.setItem('token', response?.token);
+        localStorage.setItem('userEmail', response?.userEmail);
+        localStorage.setItem('userId', response?.userId);
         navigate("/mainPage", {state: {token: response.token}});
       } else {
         toast.error(response.message);

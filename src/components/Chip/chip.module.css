@@ -2,6 +2,11 @@ p {
   font-size: 0.7rem;
 }
 
+.pBig {
+  font-size: 1rem;
+  margin: 5px 10px;
+}
+
 .main {
   display: inline-flex;
   background-color: #ffeeee;
