@@ -61,4 +61,17 @@ const toGetAllJobs = async (data, setLoading, id) => {
   }
 };
 
-export { toGetJobDetails, toCreateJob, toGetAllJobs, toEditJob };
+const toDeleteJob = async (setLoading, id) => {
+  try {
+    setLoading(true);
+    const url = `${baseurl}/job/delete/${id}`;
+    const response = await axios.delete(url);
+    setLoading(false);
+    return response.data;
+  } catch (error) {
+    setLoading(false);
+    console.log("Error deleting job", error);
+  }
+};
+
+export { toGetJobDetails, toCreateJob, toGetAllJobs, toEditJob, toDeleteJob };

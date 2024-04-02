@@ -6,7 +6,7 @@ import Salary from "../../assets/money.png";
 import Calender from "../../assets/calender.png";
 import Card from "../../components/JobDetails/card";
 import { useParams } from "react-router-dom";
-import { toGetJobDetails } from "../../apis/jobs";
+import { toGetJobDetails, toDeleteJob } from "../../apis/jobs";
 import { toast } from "react-toastify";
 import { toGetTimeAgo } from "../../components/DateFormatter/dateFormatter";
 import { useNavigate } from "react-router-dom";
@@ -20,7 +20,7 @@ const JobDetails = () => {
   const [jobDetails, setJobDetails] = useState();
   const [loading, setLoading] = useState(false);
   const [loggedIn, setLoggedIn] = useState(false);
-  const userID = localStorage.getItem('userId');
+  const userID = localStorage.getItem("userId");
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -37,6 +37,17 @@ const JobDetails = () => {
       setJobDetails(response);
     } else {
       toast.error("Error fetching job details");
+    }
+  };
+
+  const handleDeleteJobPost = async () => {
+    if (!jobid) return;
+    const response = await toDeleteJob(setLoading, jobid);
+    if (response) {
+      toast.success("Job deleted successfully");
+      navigate("/mainPage");
+    } else {
+      toast.error("Error deleting job post details");
     }
   };
 
@@ -94,15 +105,39 @@ const JobDetails = () => {
                 <p>{jobDetails?.location}</p>
               </div>
 
-              {loggedIn ? (
-                <button
-                  onClick={() => navigate("/job-add-page", {state: {data: jobDetails, edit: true}})}
-                  className={userID === jobDetails?.createdBy ? styles.editBtn : styles.disabledEditBtn}
-                  disabled={userID === jobDetails?.createdBy ? false : true}
-                >
-                  Edit Job
-                </button>
-              ) : null}
+              <div>
+                {loggedIn ? (
+                  <button
+                    onClick={() =>
+                      navigate("/job-add-page", {
+                        state: { data: jobDetails, edit: true },
+                      })
+                    }
+                    className={
+                      userID === jobDetails?.createdBy
+                        ? styles.editBtn
+                        : styles.disabledEditBtn
+                    }
+                    disabled={userID === jobDetails?.createdBy ? false : true}
+                  >
+                    Edit Job
+                  </button>
+                ) : null}
+
+                {loggedIn ? (
+                  <button
+                    onClick={handleDeleteJobPost}
+                    className={
+                      userID === jobDetails?.createdBy
+                        ? styles.deleteBtn
+                        : styles.disabledDeleteBtn
+                    }
+                    disabled={userID === jobDetails?.createdBy ? false : true}
+                  >
+                    DELETE
+                  </button>
+                ) : null}
+              </div>
             </div>
 
             <div className={styles.jobInfo}>

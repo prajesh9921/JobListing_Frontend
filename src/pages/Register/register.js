@@ -31,16 +31,20 @@ const RegisterPage = () => {
   };
 
   const handleFormSubmit = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!formData.name || !formData.email || !formData.password || !formData.mobile){
       return toast.error("Required all fields");
-    } else if (!formData.checkbox) {
+    } else if (!emailRegex.test(formData.email)) {
+      return toast.error("Enter a valid email address");
+    } 
+    else if (!formData.checkbox) {
       return toast.error("Please check the box");
     }
 
     const response = await RegisterApi(formData.name, formData.email, formData.password, formData.mobile, setLoading);
     if (response) {
       if (response.message === "User created successfully") {
-        toast.success(response.message + "Redirecting to login page");
+        toast.success(response.message + " Redirecting to login page");
         setTimeout(() => {
           navigate("/login")
         }, 4000)

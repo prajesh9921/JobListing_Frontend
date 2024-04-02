@@ -83,6 +83,8 @@ const MainPage = ({ route }) => {
             value={filterData.title}
             name="title"
             onChange={handleOnchange}
+            placeholder="Enter keywords"
+            onKeyDown={e => e.key === 'Enter' ? fetchJobData() : null}
           />
         </div>
 

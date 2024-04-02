@@ -30,8 +30,12 @@ const LoginPage = () => {
   };
 
   const handleLogin = async () => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!loginData.email || !loginData.password) {
       return toast.error("Email and password field cannot be empty");
+    }
+    if (!emailRegex.test(loginData.email)) {
+      return toast.error("Please enter a valid email");
     }
 
     const response = await LoginApi(
